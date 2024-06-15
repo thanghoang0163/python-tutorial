@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Image Recognition</title>
+
+    <style>
+      body {
+        max-width: 100vw;
+      }
+      span {
+        word-wrap: break-word;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Image Recognition with Sightengine</h1>
+    <form method="post" enctype="multipart/form-data">
+      <label for="file">Upload an image:</label>
+      <input type="file" id="file" name="file" required />
+      <button type="submit">Upload</button>
+    </form>
+    {% if filename %}
+    <h2>Uploaded Image:</h2>
+    <img
+      src="{{ url_for('uploaded_file', filename=filename) }}"
+      alt="Uploaded Image"
+      width="300"
+    />
+
+    <h2>Image Recognition Results:</h2>
+    {% if attributes %}
+    <div>{{'-->'}}attributes: {{ attributes }}</div></br>
+      {% endif %}
+    {% if celebrity %}
+    <div>{{'-->'}}celebrity: {{ celebrity }}</div></br>
+      {% endif %}
+    <div>{{'-->'}}nudity: {{ nudity }}</div></br>
+    <div>{{'-->'}}type: {{ type }}</div></br>
+    <div>{{'-->'}}quality: {{ quality }}</div></br>
+    {% endif %}
+  </body>
+</html>
